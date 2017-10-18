@@ -1,0 +1,354 @@
+
+/* 1. IMPORT SECTION */
+
+@import url("http://fonts.googleapis.com/css?family=Raleway:200,300,600,700&subset=latin,latin-ext");
+
+
+/* 2. BASIC STYLES */
+
+html, body {
+	height: 100%;
+}
+
+body {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	font-weight: 200;
+	line-height: 1.7857;
+	letter-spacing: 0.075em;
+	color: #333333;
+	background-color: #fff;
+}
+
+a { 
+	color: #0085c3;
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-ms-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+}
+
+a:hover {
+	color: #000;
+}
+
+a, a:hover, a:active, a:focus, button:focus {
+	outline: 0;
+	border: 0;
+	text-decoration: none;
+}
+
+p {
+	line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6{
+	font-family: 'Raleway', sans-serif;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+input, textarea{
+	outline: none;
+}
+
+label{
+	font-weight: 300;
+}
+
+.center {
+	margin: auto 0px;
+}
+
+.wait {
+	opacity: 0.6;
+}
+
+.waitImage {
+	position: absolute; top: 45%; left: 48%; font-size: 12px; color: #FFFFFF; z-index: 99999;
+}
+
+.marginTop10 {
+	margin-top: 10px;
+}
+.marginRight10 {
+	margin-right: 10px;
+}
+
+.marginTop30 {
+	margin-top: 30px;
+}
+
+.userPhotoDiv {
+	width: 56px;
+	height: 56px;
+	border-radius: 50%;
+	border: 3px solid #e6e6e6;
+	background-image: url(../../images/default-avatar.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+input[type=checkbox] {
+	visibility: hidden;
+}
+
+.userCheckbox {
+	width: 14px;
+	height: 13px;
+	margin: 33px 18px;
+	position: relative;
+}
+
+.userCheckbox label {
+	cursor: pointer;
+	position: absolute;
+	width: 14px;
+	height: 14px;
+	top: 0;
+  	left: 0;
+	background: #fff;
+	border:1px solid #ddd;
+	z-index: 100;
+}
+
+.userCheckbox label:after {
+	opacity: 0.2;
+	content: '';
+	position: absolute;
+	width: 9px;
+	height: 5px;
+	background: transparent;
+	top: 3px;
+	left: 2px;
+	border: 2px solid #339933;
+	border-top: none;
+	border-right: none;
+	transform: rotate(-45deg);
+}
+
+.userCheckbox label:hover::after {
+	opacity: 0.5;
+}
+
+.userCheckbox input[type=checkbox]:checked + label:after {
+	opacity: 1;
+}
+
+.userCheckboxBg {
+	height: 20px;
+	width: 54px;
+	position: relative;
+	left: -20px;
+	top: -20px;
+	z-index: 1;
+	opacity: 0.9;
+}
+
+.bgColorLightGray {
+	background-color: #e6e6e6;
+}
+
+.bgColorgreen {
+	background-color: #339933;
+}
+
+.bgColorGreenBtn {
+	background-color: #339966;
+}
+
+.floatLeft {
+	float: left;
+}
+
+.noroundborder {
+	border-radius: 0;
+}
+
+.noBorder {
+	border: none;
+}
+
+.width100Perc {
+	width: 100%;
+}
+
+.blueColor {
+	color: #0085c3;
+}
+
+.sprite {
+	background-image: url('../../images/sprite.png');
+	background-repeat: no-repeat;
+}
+
+
+.optionDivArrow {
+	position: relative;
+	top: -50px;
+	left: 430px;
+    width: 20px;
+    height: 20px;
+	background-position: -140px 0px;
+}
+
+.optionsBar {
+	background-color: #1b1528;
+	height: 100px;
+	overflow: hidden;
+    white-space: nowrap;
+}
+
+.optionText {
+	color: white;
+	font-weight: bold;
+	position: relative;
+}
+.optionDiv {
+	position: relative;
+    width: 140px;
+    height: 90px;
+	float: left;
+	text-align: center;
+	cursor: pointer;
+}
+
+.passportIcon {
+	position: relative;
+	top: 10px;
+	left: 33px;
+    width: 85px;
+    height: 70px;
+	background-position: -290px -50px;
+}
+
+.projectsIcon {
+	position: relative;
+	top: 10px;
+	left: 28px;
+    width: 90px;
+    height: 70px;
+	background-position: -210px -50px;
+}
+
+.workgroupsIcon {
+	position: relative;
+	top: 10px;
+	left: 30px;
+    width: 80px;
+    height: 70px;
+	background-position: -140px -50px;
+}
+
+.roleProfilesIcon {
+	position: relative;
+	top: 10px;
+	left: 27px;
+    width: 80px;
+    height: 70px;
+	background-position: -440px -50px;
+}
+
+.communitiesIcon {
+	position: relative;
+	top: 10px;
+	left: 23px;
+    width: 80px;
+    height: 70px;
+	background-position: -360px -50px;
+}
+
+.communitiesInfo {
+	height: 80px;
+}
+
+.communitiesInfoIcon {
+	position: relative;
+	top: 20px;
+	float: right;
+    width: 118px;
+    height: 118px;
+	background-position: -450px -350px;
+	border-radius: 50%;
+	zoom:0.5;
+    -moz-transform:scale(0.5);
+    -moz-transform-origin: 0 0;
+}
+
+.cogIcon {
+	position: relative;
+	top: 10px;
+	left: 50px;
+    width: 118px;
+    height: 30px;
+	zoom:2.5;
+    -moz-transform:scale(2.5);
+    -moz-transform-origin: 0 0;
+}
+
+.paperPlaneIcon {
+	position: relative;
+	right: 5%;
+    width: 50px;
+    height: 50px;
+	background-position: -290px 0px;
+}
+
+.searchIcon {
+	position: relative;
+	top: 3px;
+    width: 50px;
+    height: 50px;
+	background-position: -650px -50px;
+}
+
+.userIcon {
+	position: relative;
+	top: 3px;
+	width: 45px;
+	height: 45px;
+	border-radius: 50%;
+	border: 3px solid #0085c3;
+	background-image: url(../../images/default-avatar.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+.floatLeft{
+	float: left;
+}
+
+.floatRight{
+	float: right;
+}
+
+.textAlignCenter {
+	text-align: center;
+}
+
+.cursorPointer {
+	cursor: pointer;
+}
+
+.sidePadding30 {
+    padding-left: 30px;	
+    padding-right: 30px;	
+}
+
+.alphabet {
+	padding-left: 50px;
+	color: lightgray;
+	font-size: 16px;
+}
+
+.alphabetBg {
+	width: 25px;
+	height: 25px;
+	padding: 2px;
+	color: white;
+	border-radius: 50%;
+	background-color: #0085c3;
+}

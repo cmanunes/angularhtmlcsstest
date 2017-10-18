@@ -1,0 +1,168 @@
+<html ng-app="communityApp">
+	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" />
+		<!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet"/>-->
+        <link rel="stylesheet" type="text/css" href="app/css/bootstrap/font-awesome.min.css"/>
+        <link rel="stylesheet" type="text/css" href="app/css/style.css"/>
+	</head>
+<body ng-controller="CommunityController">
+
+	<div ng-if="showLoader">
+		<div class="waitImage">
+			<img src="images/ajax-loader.gif" alt="" />
+		</div>
+	</div>
+
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="floatRight sprite userIcon"></div>
+			<div ng-click="showSearchOptionsInfo()" class="floatRight sprite searchIcon cursorPointer"></div>
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="floatLeft navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+					<li><a href="#">Link</a></li>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#">Link</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+							Dropdown <span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li role="separator" class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+							</ul>
+						</li>
+					</ul>
+				</ul>
+			</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+	</nav>
+	
+	<div ng-if="showSearchOptions" class="row">
+		<div class="col-lg-12">
+			<div class="input-group">
+				<span class="input-group-btn">
+					<div class="dropdown">
+						<button class="noroundborder btn btn-default dropdown-toggle sidePadding30" 
+								type="button" id="dropdownMenu1" data-toggle="dropdown" 
+								aria-haspopup="true" aria-expanded="true">
+							Content
+							<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+							<li><a href="#">Action</a></li>
+							<li><a href="#">Another action</a></li>
+							<li><a href="#">Something else here</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#">Separated link</a></li>
+						</ul>
+					</div>
+				</span>
+				<input type="text" id="search" name="search" placeholder="Search for..." class="form-control width100Perc input-field">
+				<span class="input-group-btn">
+					<button type="button" class="noroundborder btn btn-default sidePadding30"><b>Go!</b></button>
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="row marginTop10 optionsBar">
+		<div class="col-sm-2 col-xs-2">&nbsp;</div>
+		<div class="col-sm-8 col-xs-8">
+			<div class="optionDiv"><div class="sprite passportIcon"></div><div class="optionText">Passport</div></div>
+			<div class="optionDiv"><div class="sprite projectsIcon"></div><span class="optionText">Projects</span></div>
+			<div class="optionDiv"><div class="sprite workgroupsIcon"></div><span class="optionText">Workgroups</span></div>
+			<div class="optionDiv"><div class="sprite roleProfilesIcon"></div><span class="optionText">Role Profiles</span></div>
+			<div class="optionDiv" ng-mouseenter="showCommunitiesInfo()" ng-mouseleave="showCommunitiesInfo()">
+				<div class="sprite communitiesIcon"></div><span class="optionText">Communities</span>
+			</div>
+		</div>
+		<div class="col-sm-2 col-xs-2">&nbsp;</div>
+	</div>
+
+	<div ng-if="showCommunitiesInfoDiv" ng-mouseenter="showSubCommunitiesInfo()" ng-mouseleave="showSubCommunitiesInfo()" 
+	     class="row communitiesInfo bgColorLightGray">
+		<div class="col-sm-2 col-xs-2">
+			<div class="sprite communitiesInfoIcon"></div>
+		</div>
+		<div class="col-sm-8 col-xs-8">
+			blabla blabla
+			<div class="optionDivArrow"></div>
+		</div>
+		<div class="col-sm-2 col-xs-2">
+			<span class="glyphicon glyphicon-cog cogIcon"></span>
+		</div>
+	</div>
+	
+	<div class="container">
+		<div class="row marginTop10">
+			<div class="input-group">
+				<span class="input-group-btn">
+					<input type="text" id="filter" name="filter" ng-model="query" placeholder="Filter..." class="input-field">
+				</span>
+				<span class="input-group-btn alphabet">
+					<span ng-repeat="alphabet in alphabets">
+						<span id="alphabet{{$index+1}}" 
+							  ng-click="filterCommunity(alphabet)" ng-bind="alphabet"
+							  ng-class="{ alphabetBg: alphabet == letter }" class="cursorPointer"></span>
+					</span>
+				</span>
+				<div class="sprite paperPlaneIcon floatRight"
+					 ng-mouseover="popoverOpened1=true"
+					 ng-mouseleave="popoverOpened1=false"
+					 uib-popover-html="emailPopover" 
+					 popover-trigger="none"
+					 popover-placement="top-right"
+					 popover-is-open="popoverOpened1"></div>
+			</div>
+		</div>
+		<div class="row marginTop20">
+			<div ng-repeat="user in communityData | filter:query:customFilter | limitTo:quantity" class="col-sm-4 col-xs-4 marginTop30">
+				<div class="userPhotoDiv floatLeft marginRight10">
+					<div class="userCheckbox">
+						<input type="checkbox" id="user{{$index+1}}" name="user{{$index+1}}" />
+						<label for="user{{$index+1}}"></label>
+						<div class="userCheckboxBg bgColorLightGray">&nbsp;</div>
+					</div>
+				</div>
+				<div><a href="" ng-bind="user.nm"></a></div>
+				<div><span ng-bind="user.nm"></span><span>@email.com</span></div>
+			</div>
+			<div>
+				
+			</div>
+		</div>
+	</div>
+	
+	<div class="container textAlignCenter marginTop30">
+		<button type="button" class="noroundborder btn btn-success" ng-click="loadMore()"><b>Load More</b></button>
+	</div>
+
+	<script type="text/javascript" src="app/js/data/names.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="app/vendor/angular/angular.min.js"></script>
+	<script type="text/javascript" src="app/vendor/angular/angular-messages.min.js"></script>
+	<script type="text/javascript" src="app/vendor/angular/angular-material.min.js"></script>
+	<script type="text/javascript" src="app/vendor/angular/angular-resource.min.js"></script>
+	<script type="text/javascript" src="app/vendor/angular/angular-route.min.js"></script>
+	<script type="text/javascript" src="app/vendor/angular/angular-sanitize.min.js"></script>
+	<script type="text/javascript" src="app/vendor/ui-router/angular-ui-router.min.js"></script>
+	<script type="text/javascript" src="app/vendor/ui-bootstrap/ui-bootstrap-tpls-2.5.0.min.js"></script>
+	<script type="text/javascript" src="app/js/app.js"></script>
+	<script type="text/javascript" src="app/js/community/community-ctrl.js"></script>
+</body>
+</html>
